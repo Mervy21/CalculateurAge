@@ -1,4 +1,7 @@
-﻿namespace CalculateurAge
+﻿using CalculateurAge.Views;
+using System.Threading.Tasks;
+
+namespace CalculateurAge
 {
     public partial class MainPage : ContentPage
     {
@@ -9,7 +12,7 @@
        // Gestionnaire appele au clic du button calculer
        //sender=le controle clique;e= donees de l'evenement
 
-        public void onCalculerClicked (object sender, EventArgs e)
+        private async void  onCalculerClicked (object sender, EventArgs e)
         {
             //validation ;on refuse un nom vide
             if(string.IsNullOrWhiteSpace(entryNom.Text))
@@ -21,9 +24,9 @@
             int age = DateTime.Today.Year - d.Year;
             if (d.Date > DateTime.Today.AddYears(-age)) age--;
 
-            lblResultat.Text = $"{entryNom.Text}, vous avez {age} ans";
-            lblResultat.IsVisible = true ;
+           await Shell.Current.GoToAsync(
+               $"{nameof(ResultatPage)}?nom={entryNom.Text}&age={age}");
         }
-       
     }
+       
 }
