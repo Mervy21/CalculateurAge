@@ -1,4 +1,5 @@
 using System.Windows.Input;
+
 namespace CalculateurAge.ViewModels;
 //transforme une methode en objet liable  a un button
 public class RelayCommand : ICommand
@@ -18,6 +19,8 @@ public class RelayCommand : ICommand
         => _execute();
     public event EventHandler CanExecuteChanged;
     //a appeler pour forcer le button a reposer la question
-    public void Rafraichir()
-        => CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+    public void RaiseCanExecuteChanged()
+    {
+        CanExecuteChanged?.Invoke(this, EventArgs.Empty);
+    }
 }

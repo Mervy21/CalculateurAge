@@ -6,12 +6,15 @@
     <ScrollView>
         <VerticalStackLayout Padding="20" Spacing="12">
             <Label Text="Nom" FontSize="16"/>
-            <Entry Text="{Binding Nom, Mode=TwoWay}" Placeholder="Votre nom"/>
+            <Entry Text="{Binding Nom, Mode=TwoWay}" Placeholder="Votre nom" FontSize="16"/>
             <Label Text="Date de naissance" FontSize="16"/>
-            <DatePicker Date="{Binding DateNaissance}"/>
-            <Button Text="Calculer" Command="{Binding calculerCommand}"/>
+            <DatePicker Date="{Binding DateNaissance}" FontSize="16"/>
+            <Button Text="Calculer" Command="{Binding CalculerCommand}"/>
+            <Button Text="Effacer" Command="{Binding EffacerCommand}" BackgroundColor="Red" TextColor="White"/>
             <Label Text="{Binding Resultat}" FontSize="20"
-                   IsVisible="{Binding ResultatVisible}"/>
+                   IsVisible="{Binding ResultatVisible}" HorizontalOptions="Center"/>
+            <Label Text="{Binding StatusAge}" FontSize="16" HorizontalOptions="Center"/>
+            <Label Text="{Binding JourAvantAnniversaire}" FontSize="16" HorizontalOptions="Center"/>
         </VerticalStackLayout>
     </ScrollView>
 </ContentPage>
